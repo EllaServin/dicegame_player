@@ -1,10 +1,3 @@
-input.onButtonPressed(Button.A, function () {
-    radio.sendString("B" + "A" + tärning())
-})
-function tärning () {
-    siffra = "6"
-    return siffra
-}
 input.onButtonPressed(Button.AB, function () {
     radio.sendString("PLAYER")
     basic.showIcon(IconNames.Yes)
@@ -16,8 +9,4 @@ radio.onReceivedString(function (receivedString) {
         basic.showIcon(IconNames.Sad)
     }
 })
-input.onButtonPressed(Button.B, function () {
-    radio.sendString("B" + tärning())
-})
-let siffra = ""
 radio.setGroup(33)
