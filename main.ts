@@ -1,5 +1,5 @@
 input.onButtonPressed(Button.A, function () {
-    radio.sendString("B" + list)
+    radio.sendString("A" + list)
 })
 function tärning () {
     list = randint(1, 6)
@@ -62,6 +62,14 @@ radio.onReceivedString(function (receivedString) {
         basic.showIcon(IconNames.Happy)
     } else if (receivedString.substr(0, 8) == "NOTPOINT" && parseFloat(receivedString.substr(8, receivedString.length - 8)) == control.deviceSerialNumber()) {
         basic.showIcon(IconNames.Sad)
+    } else if (receivedString == "ROLL") {
+        basic.showLeds(`
+            # # . . .
+            # . # . .
+            # # . . .
+            # . # . .
+            # . . # .
+            `)
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -74,3 +82,4 @@ input.onGesture(Gesture.Shake, function () {
 })
 let list = 0
 radio.setGroup(33)
+radio.setTransmitSerialNumber(true)
