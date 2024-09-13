@@ -1,3 +1,58 @@
+input.onButtonPressed(Button.A, function () {
+    radio.sendString("B" + list)
+})
+function tärning () {
+    list = randint(1, 6)
+    if (list == 1) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . .
+            `)
+    } else if (list == 2) {
+        basic.showLeds(`
+            # . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . #
+            `)
+    } else if (list == 3) {
+        basic.showLeds(`
+            # . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . #
+            `)
+    } else if (list == 4) {
+        basic.showLeds(`
+            # . . . #
+            . . . . .
+            . . . . .
+            . . . . .
+            # . . . #
+            `)
+    } else if (list == 5) {
+        basic.showLeds(`
+            # . . . #
+            . . . . .
+            . . # . .
+            . . . . .
+            # . . . #
+            `)
+    } else {
+        basic.showLeds(`
+            # . . . #
+            . . . . .
+            # . . . #
+            . . . . .
+            # . . . #
+            `)
+    }
+}
 input.onButtonPressed(Button.AB, function () {
     radio.sendString("PLAYER")
     basic.showIcon(IconNames.Yes)
@@ -9,4 +64,13 @@ radio.onReceivedString(function (receivedString) {
         basic.showIcon(IconNames.Sad)
     }
 })
+input.onButtonPressed(Button.B, function () {
+    radio.sendString("B" + list)
+})
+input.onGesture(Gesture.Shake, function () {
+    for (let index = 0; index < 7; index++) {
+        tärning()
+    }
+})
+let list = 0
 radio.setGroup(33)
