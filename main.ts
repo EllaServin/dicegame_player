@@ -59,7 +59,8 @@ input.onButtonPressed(Button.AB, function () {
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString.substr(0, 5) == "POINT" && parseFloat(receivedString.substr(5, receivedString.length - 5)) == control.deviceSerialNumber()) {
-        basic.showIcon(IconNames.Happy)
+        poäng = poäng + 1
+        basic.showNumber(poäng)
     } else if (receivedString.substr(0, 8) == "NOTPOINT" && parseFloat(receivedString.substr(8, receivedString.length - 8)) == control.deviceSerialNumber()) {
         basic.showIcon(IconNames.Sad)
     } else if (receivedString == "ROLL") {
@@ -81,5 +82,7 @@ input.onGesture(Gesture.Shake, function () {
     }
 })
 let list = 0
+let poäng = 0
 radio.setGroup(33)
 radio.setTransmitSerialNumber(true)
+poäng = 0
