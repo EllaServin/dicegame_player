@@ -1,4 +1,5 @@
 input.onButtonPressed(Button.A, function () {
+    shakeAllowed = true
     radio.sendString("A" + list)
 })
 function tärning () {
@@ -56,6 +57,7 @@ function tärning () {
 input.onButtonPressed(Button.AB, function () {
     radio.sendString("PLAYER")
     basic.showIcon(IconNames.Yes)
+    shakeAllowed = true
 })
 radio.onReceivedString(function (receivedString) {
     if (receivedString.substr(0, 5) == "POINT" && parseFloat(receivedString.substr(5, receivedString.length - 5)) == control.deviceSerialNumber()) {
@@ -74,14 +76,19 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 input.onButtonPressed(Button.B, function () {
+    shakeAllowed = true
     radio.sendString("B" + list)
 })
 input.onGesture(Gesture.Shake, function () {
-    for (let index = 0; index < 7; index++) {
-        tärning()
+    if (true) {
+        for (let index = 0; index < 7; index++) {
+            tärning()
+        }
+        shakeAllowed = false
     }
 })
 let list = 0
+let shakeAllowed = false
 let poäng = 0
 radio.setGroup(33)
 radio.setTransmitSerialNumber(true)
