@@ -78,10 +78,12 @@ input.onButtonPressed(Button.B, function () {
     radio.sendString("B" + list)
 })
 input.onGesture(Gesture.Shake, function () {
-    for (let index = 0; index < 7; index++) {
-        tärning()
+    if (shakeAllowed == true) {
+        shakeAllowed = false
+        for (let index = 0; index < 7; index++) {
+            tärning()
+        }
     }
-    shakeAllowed = false
 })
 let shakeAllowed = false
 let list = 0
